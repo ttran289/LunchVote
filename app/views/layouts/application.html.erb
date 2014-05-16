@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lunchvote</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">LunchVote</a>
+    </div>
+    
+      <ul class="nav navbar-nav">
+
+        <li class="active"><a href="#">Create a new room</a></li>
+        <li><a href="#">Go to an existing room</a></li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+      	
+	        <li><%= link_to "Sign Up", new_user_path%></li>
+	        <li><%= link_to "Sign in", new_session_path%></li> 
+        	<li><%= link_to "Sign out", sessions_path, :method => :delete %></li>
+      
+      </ul>
+
+  </div><!-- /.container-fluid -->
+
+</nav>
+<h1 class ="text-center">LunchVote!!</h1>
+
+<%= yield %>
+
+</body>
+</html>

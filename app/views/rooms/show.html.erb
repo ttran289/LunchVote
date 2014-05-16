@@ -1,0 +1,24 @@
+<h2><%=@room.name%></h2>  
+
+<h3>These are the suggestion for Lunch!!</h3>
+<div class="row">
+	<% @room.lunches.each do |l| %>
+		<div class="col-sm-6 col-md-4">
+		    <div class="thumbnail">
+		      <div class="caption">
+		        
+				<p>I would like to go to <%=l.name%> for lunch</p>
+				<p>Time <%=l.time%>
+				<p>Date <%=l.date%>	
+				
+		        <p><a href="#" class="btn btn-primary" role="button">Upvote</a> <a href="#" class="btn btn-default" role="button">Downvote</a></p>
+		      </div>
+		    </div>
+		</div>
+	<% end %>
+</div>
+<ul>
+	<li><%= link_to "Lunch suggestion", new_room_lunch_path(@room.id) %></li>
+	<li><%= link_to "Room list", rooms_path%></li>
+
+</ul>
