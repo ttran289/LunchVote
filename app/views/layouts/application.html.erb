@@ -11,29 +11,33 @@
   <div class="container-fluid">
 
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">LunchVote</a>
+      <div class="navbar-brand"><%= link_to 'LunchVote', root_path%></div>
     </div>
     
       <ul class="nav navbar-nav">
 
-        <li class="active"><a href="#">Create a new room</a></li>
-        <li><a href="#">Go to an existing room</a></li>
+        <li class="active"><%=link_to "Create a New Room", new_room_path %></li>
+        <li><%= link_to 'Go to an existing room', rooms_path%></li>
       </ul>
       
-      <ul class="nav navbar-nav navbar-right">
-      	
-	        <li><%= link_to "Sign Up", new_user_path%></li>
-	        <li><%= link_to "Sign in", new_session_path%></li> 
-        	<li><%= link_to "Sign out", sessions_path, :method => :delete %></li>
-      
-      </ul>
-
+        <ul class="nav navbar-nav navbar-right">
+        	<% if !current_user %>
+  	        <li><%= link_to "Sign Up", new_user_path%></li>
+  	        <li><%= link_to "Sign in", new_sessions_path%></li> 
+            <% else %>
+            <li>Hello, <%= current_user.name%></li>
+          	<li><%= link_to "Sign out", sessions_path, :method => :delete %></li>
+            <%end%>
+        </ul>
+     <!--nav bar collapse-->
   </div><!-- /.container-fluid -->
-
 </nav>
-<h1 class ="text-center">LunchVote!!</h1>
-
-<%= yield %>
+<div class="container-fluid">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+  <%= yield %>
+</div>
 
 </body>
 </html>

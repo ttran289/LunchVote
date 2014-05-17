@@ -1,4 +1,5 @@
 class LunchesController < ApplicationController
+	
 	def index
 		@lunches = Lunch.all
 	end
@@ -38,10 +39,21 @@ class LunchesController < ApplicationController
 			render 'edit'
 		end
 	end
+	
+	def upvote
+		@lunch = Lunch.find(params[:id])
+		current_user.vote(@lunch,:up)
+		redirect_to room_path(params[:room_id])
+	end
+
+	
+
 
 	def destroy
 		@lunch = Lunch.find(params[:id])
 		@lunch.destroy
-		redirect_to room_lunches_path
+		redirect_to room_path(params[:room_id])
 	end
 end
+
+

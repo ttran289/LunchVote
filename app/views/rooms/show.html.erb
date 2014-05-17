@@ -10,8 +10,14 @@
 				<p>I would like to go to <%=l.name%> for lunch</p>
 				<p>Time <%=l.time%>
 				<p>Date <%=l.date%>	
-				
-		        <p><a href="#" class="btn btn-primary" role="button">Upvote</a> <a href="#" class="btn btn-default" role="button">Downvote</a></p>
+					
+					<p><%= l.votes_count %></p>
+		        
+		        	<%= link_to 'Upvote', lunch_up_vote_path(:room_id => @room.id,:id =>l)%>
+
+		         	<%= link_to 'Downvote', lunch_down_vote_path(:room_id => @room.id,:id =>l)%>
+		        <%= link_to 'Delete',room_lunch_path(@room,l.id),method: :delete, data: { confirm: 'Are you sure?' } %>
+
 		      </div>
 		    </div>
 		</div>

@@ -7,11 +7,13 @@
 		    <div class="thumbnail">
 		      <div class="caption">
 		        <h3><%=r.name%></h3>
-
 		        <p>
-		        	<button  >
+		        	<button>
 		        		<%=link_to "GO TO ROOM",r %>
 		        	</button> 
+		        	<button>
+		        		<%= link_to 'Delete',r,method: :delete, data: { confirm: 'Are you sure?' } %>
+		        	</button>
 		        </p>
 		      </div>
 		    </div>

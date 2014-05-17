@@ -1,17 +1,19 @@
 Lunchvote::Application.routes.draw do
-  
+  resources :signout
+  resources :welcome
   resources :users
-  resources :sessions
- 
+  resource :sessions, only: [:new, :create,:destroy]
   resources :rooms do
     resources :lunches
   end
+  get '/rooms/:room_id/lunches/:id/upvote'=> 'lunches#upvote', :as => "lunch_up_vote"
+  get '/rooms/:room_id/lunches/:id/downvote'=> 'lunches#downvote', :as => "lunch_down_vote"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root "rooms#index"
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
